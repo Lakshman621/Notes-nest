@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoteHub - Notes Sharing Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2 class="logo">📚 NoteHub</h2>
+
+        <p class="menu-title">MENU</p>
+
+        <button class="nav-btn active" data-filter="all">
+            🏠 All Notes
+        </button>
+
+        <button class="nav-btn" data-filter="favorite">
+            ⭐ Favorites
+        </button>
+
+        <button class="nav-btn" data-filter="shared">
+            🔗 Shared Notes
+        </button>
+
+        <p class="menu-title">CATEGORIES</p>
+
+        <button class="nav-btn" data-filter="Study">📖 Study</button>
+        <button class="nav-btn" data-filter="Personal">👤 Personal</button>
+        <button class="nav-btn" data-filter="Work">💼 Work</button>
+        <button class="nav-btn" data-filter="Projects">💡 Projects</button>
+
+        <div class="sidebar-bottom">
+            <p>Organize your thoughts.</p>
+            <small>NoteHub © 2026</small>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <header class="topbar">
+            <div>
+                <h1>My Notes</h1>
+                <p>Welcome back! Manage your ideas in one place.</p>
+            </div>
+
+            <button class="add-btn" id="addNoteBtn">
+                + Create Note
+            </button>
+        </header>
+
+        <!-- Search -->
+        <div class="search-box">
+            <span>🔍</span>
+            <input type="text" id="searchInput"
+                   placeholder="Search your notes...">
+        </div>
+
+        <!-- Statistics -->
+        <section class="stats">
+            <div class="stat-card">
+                <span>📝</span>
+                <h2 id="totalNotes">0</h2>
+                <p>Total Notes</p>
+            </div>
+
+            <div class="stat-card">
+                <span>⭐</span>
+                <h2 id="favoriteNotes">0</h2>
+                <p>Favorites</p>
+            </div>
+
+            <div class="stat-card">
+                <span>🔗</span>
+                <h2 id="sharedNotes">0</h2>
+                <p>Shared Notes</p>
+            </div>
+        </section>
+
+        <div class="notes-heading">
+            <h2 id="sectionTitle">All Notes</h2>
+            <select id="sortNotes">
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+                <option value="az">Title A-Z</option>
+            </select>
+        </div>
+
+        <!-- Notes Container -->
+        <section class="notes-grid" id="notesContainer"></section>
+
+    </main>
+</div>
+
+<!-- Add/Edit Note Modal -->
+<div class="modal" id="noteModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalTitle">Create New Note</h2>
+            <button id="closeModal" class="close-btn">✕</button>
+        </div>
+
+        <form id="noteForm">
+            <input type="hidden" id="noteId">
+
+            <label>Note Title</label>
+            <input type="text" id="noteTitle"
+                   placeholder="Enter note title..." required>
+
+            <label>Category</label>
+            <select id="noteCategory">
+                <option>Study</option>
+                <option>Personal</option>
+                <option>Work</option>
+                <option>Projects</option>
+            </select>
+
+            <label>Note Content</label>
+            <textarea id="noteContent"
+                      placeholder="Write your notes here..."
+                      required></textarea>
+
+            <div class="modal-actions">
+                <button type="button" id="cancelBtn" class="cancel-btn">
+                    Cancel
+                </button>
+                <button type="submit" class="save-btn">
+                    Save Note
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
